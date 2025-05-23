@@ -15,7 +15,9 @@ O projeto utiliza **MySQL** como banco de dados e padrões de projeto como **Str
 - **MySQL**: Banco de dados principal para persistência de dados.
 - **H2**: Banco de dados em memória para testes automatizados.
 - **MapStruct**: Automatiza mapeamento entre entidades e DTOs, mantendo o código limpo e eficiente.
+- **OpenAPI / Swagger** (documentação da API)
 - **RestAssured**: Facilita testes de integração, garantindo a qualidade da API.
+
 
 ---
 
