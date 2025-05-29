@@ -1,6 +1,6 @@
 package com.gianmarques001.biblioteca_api.usuario.dto;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
-public record UsuarioUpdateRequestDTO(@NotNull String senha, @NotNull String novaSenha) {
+public record UsuarioUpdateRequestDTO(@NotBlank String senha, @NotBlank String novaSenha) {
 }

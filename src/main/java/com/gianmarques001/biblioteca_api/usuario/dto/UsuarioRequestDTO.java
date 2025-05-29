@@ -1,8 +1,8 @@
 package com.gianmarques001.biblioteca_api.usuario.dto;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 public record UsuarioRequestDTO(
-        @NotNull String nome, @Email @NotNull String email, @NotNull String senha, @NotNull String permissao) {
+        @NotBlank String nome, @Email @NotBlank String email, @NotBlank String senha, @NotBlank String permissao) {
 }

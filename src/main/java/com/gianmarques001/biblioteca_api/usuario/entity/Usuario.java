@@ -72,5 +72,4 @@ public class Usuario implements Observador {
 
     }
 
-
 }

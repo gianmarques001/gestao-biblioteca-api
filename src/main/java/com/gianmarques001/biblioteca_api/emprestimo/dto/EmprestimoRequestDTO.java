@@ -1,4 +1,6 @@
 package com.gianmarques001.biblioteca_api.emprestimo.dto;
 
-public record EmprestimoRequestDTO(Long livro) {
+import jakarta.validation.constraints.NotNull;
+
+public record EmprestimoRequestDTO(@NotNull Long idLivro) {
 }

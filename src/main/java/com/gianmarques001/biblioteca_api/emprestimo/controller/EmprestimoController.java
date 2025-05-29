@@ -1,6 +1,6 @@
 package com.gianmarques001.biblioteca_api.emprestimo.controller;
 
-import com.gianmarques001.biblioteca_api.auth.entity.AuthDetails;
+import com.gianmarques001.biblioteca_api.auth.model.UserAuthDetails;
 import com.gianmarques001.biblioteca_api.common.model.MensagemDeErro;
 import com.gianmarques001.biblioteca_api.emprestimo.dto.*;
 import com.gianmarques001.biblioteca_api.emprestimo.entity.Emprestimo;
@@ -43,9 +43,9 @@ public class EmprestimoController {
 
     @PreAuthorize("hasAnyRole('ALUNO', 'PROFESSOR')")
     @PostMapping
-    public ResponseEntity<EmprestimoResponseDTO> salvar(@AuthenticationPrincipal AuthDetails authDetails, @RequestBody EmprestimoRequestDTO emprestimoRequestDTO) {
-        Livro livro = livroService.buscarLivroPorId(emprestimoRequestDTO.livro());
-        Emprestimo emprestimo = emprestimoService.realizarEmprestimo(livro, authDetails.getId());
+    public ResponseEntity<EmprestimoResponseDTO> salvar(@AuthenticationPrincipal UserAuthDetails userAuthDetails, @RequestBody EmprestimoRequestDTO emprestimoRequestDTO) {
+        Livro livro = livroService.buscarLivroPorId(emprestimoRequestDTO.idLivro());
+        Emprestimo emprestimo = emprestimoService.realizarEmprestimo(livro, userAuthDetails.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(emprestimoMapper.toResponseDTO(emprestimo));
     }
 
@@ -101,10 +101,10 @@ public class EmprestimoController {
                                     schema = @Schema(implementation = MensagemDeErro.class))),
             })
     @GetMapping("/meus")
-    public ResponseEntity<PagedModel<EmprestimoDetailsResponseDTO>> listarEmprestimosPorUsuario(@AuthenticationPrincipal AuthDetails authDetails,
+    public ResponseEntity<PagedModel<EmprestimoDetailsResponseDTO>> listarEmprestimosPorUsuario(@AuthenticationPrincipal UserAuthDetails userAuthDetails,
                                                                                                 @RequestParam(defaultValue = "0") Integer pagina,
                                                                                                 @RequestParam(defaultValue = "5") Integer tam_pagina) {
-        Page<Emprestimo> emprestimos = emprestimoService.listarEmprestimosPorUsuario(authDetails.getId(), pagina, tam_pagina);
+        Page<Emprestimo> emprestimos = emprestimoService.listarEmprestimosPorUsuario(userAuthDetails.getId(), pagina, tam_pagina);
         PagedModel<EmprestimoDetailsResponseDTO> resultado = new PagedModel<>(emprestimos.map(emprestimoMapper::toEmprestimoDetailsResponseDTO));
         return ResponseEntity.ok(resultado);
 

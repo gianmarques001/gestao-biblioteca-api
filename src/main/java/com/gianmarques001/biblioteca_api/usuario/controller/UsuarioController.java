@@ -1,7 +1,7 @@
 package com.gianmarques001.biblioteca_api.usuario.controller;
 
 
-import com.gianmarques001.biblioteca_api.auth.entity.AuthDetails;
+import com.gianmarques001.biblioteca_api.auth.model.UserAuthDetails;
 import com.gianmarques001.biblioteca_api.common.model.MensagemDeErro;
 import com.gianmarques001.biblioteca_api.usuario.dto.UsuarioDetailsResponseDTO;
 import com.gianmarques001.biblioteca_api.usuario.dto.UsuarioRequestDTO;
@@ -110,8 +110,8 @@ public class UsuarioController {
                                     schema = @Schema(implementation = MensagemDeErro.class))),
             })
     @PatchMapping
-    public ResponseEntity<Void> atualizar(@AuthenticationPrincipal AuthDetails authDetails, @RequestBody UsuarioUpdateRequestDTO usuarioUpdateRequestDTO) {
-        usuarioService.atualizarUsuario(authDetails.getId(), usuarioUpdateRequestDTO.senha(), usuarioUpdateRequestDTO.novaSenha());
+    public ResponseEntity<Void> atualizar(@AuthenticationPrincipal UserAuthDetails userAuthDetails, @RequestBody UsuarioUpdateRequestDTO usuarioUpdateRequestDTO) {
+        usuarioService.atualizarUsuario(userAuthDetails.getId(), usuarioUpdateRequestDTO.senha(), usuarioUpdateRequestDTO.novaSenha());
         return ResponseEntity.noContent().build();
     }
 }

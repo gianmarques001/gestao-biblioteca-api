@@ -31,7 +31,6 @@ public class UsuarioService {
         } catch (DataIntegrityViolationException e) {
             throw new EmailDuplicadoException("Email já cadastrado");
         }
-
     }
 
     public List<Usuario> listarUsuarios() {

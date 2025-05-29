@@ -2,7 +2,7 @@ package com.gianmarques001.biblioteca_api.livro.entity;
 
 import com.gianmarques001.biblioteca_api.notificacao.interfaces.Notificacao;
 import com.gianmarques001.biblioteca_api.common.interfaces.Observador;
-import com.gianmarques001.biblioteca_api.common.interfaces.Subject;
+import com.gianmarques001.biblioteca_api.common.interfaces.Assunto;
 import com.gianmarques001.biblioteca_api.usuario.entity.Usuario;
 import com.gianmarques001.biblioteca_api.livro.entity.enums.GeneroLivro;
 import jakarta.persistence.*;
@@ -20,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Livro implements Subject {
+public class Livro implements Assunto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

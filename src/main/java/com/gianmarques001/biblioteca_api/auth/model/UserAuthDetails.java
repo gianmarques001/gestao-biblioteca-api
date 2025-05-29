@@ -1,4 +1,4 @@
-package com.gianmarques001.biblioteca_api.auth.entity;
+package com.gianmarques001.biblioteca_api.auth.model;
 
 import com.gianmarques001.biblioteca_api.usuario.entity.Usuario;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AuthDetails implements UserDetails {
+public class UserAuthDetails implements UserDetails {
 
     private Long id;
     private String email;
@@ -22,7 +22,7 @@ public class AuthDetails implements UserDetails {
     private String permissao;
 
 
-    public AuthDetails(Usuario usuario) {
+    public UserAuthDetails(Usuario usuario) {
         super();
         this.email = usuario.getEmail();
         this.senha = usuario.getSenha();

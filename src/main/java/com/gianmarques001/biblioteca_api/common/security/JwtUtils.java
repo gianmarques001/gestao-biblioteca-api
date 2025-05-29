@@ -3,7 +3,7 @@ package com.gianmarques001.biblioteca_api.common.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.gianmarques001.biblioteca_api.auth.entity.AuthDetails;
+import com.gianmarques001.biblioteca_api.auth.model.UserAuthDetails;
 import com.gianmarques001.biblioteca_api.auth.exception.JwtInvalidoException;
 
 import java.time.Instant;
@@ -16,10 +16,10 @@ public class JwtUtils {
     private static final Algorithm ALGORITHM = Algorithm.HMAC256(SECRET);
     private static final Long EXPIRE_MINUTES = 10L;
 
-    public static String generateToken(AuthDetails authDetails) {
+    public static String generateToken(UserAuthDetails userAuthDetails) {
         return JWT.create()
                 .withIssuer("biblioteca-api")
-                .withSubject(authDetails.getEmail())
+                .withSubject(userAuthDetails.getEmail())
                 .withExpiresAt(toExpire())
                 .sign(ALGORITHM);
     }

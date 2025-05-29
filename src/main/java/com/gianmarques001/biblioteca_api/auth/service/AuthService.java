@@ -1,6 +1,6 @@
 package com.gianmarques001.biblioteca_api.auth.service;
 
-import com.gianmarques001.biblioteca_api.auth.entity.AuthDetails;
+import com.gianmarques001.biblioteca_api.auth.model.UserAuthDetails;
 import com.gianmarques001.biblioteca_api.usuario.entity.Usuario;
 import com.gianmarques001.biblioteca_api.usuario.repository.UsuarioRepository;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService implements UserDetailsService {
-
-
+    
     private final UsuarioRepository usuarioRepository;
 
     public AuthService(UsuarioRepository usuarioRepository) {
@@ -25,6 +24,6 @@ public class AuthService implements UserDetailsService {
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuario não encontrado");
         }
-        return new AuthDetails(usuario);
+        return new UserAuthDetails(usuario);
     }
 }

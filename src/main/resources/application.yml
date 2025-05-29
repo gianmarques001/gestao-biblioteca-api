@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: api_biblioteca
+  profiles:
+    active: test
+  mail:
+    host: smtp.gmail.com
+    username: ${EMAIL_LOGIN}
+    port: '587'
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: 'true'
+          auth: 'true'
+    password: ${EMAIL_SENHA}
+  data:
+    jdbc:
+      dialect: mysql
+  jpa:
+    #show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: 'true'
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+      springframework:
+        transaction: DEBUG

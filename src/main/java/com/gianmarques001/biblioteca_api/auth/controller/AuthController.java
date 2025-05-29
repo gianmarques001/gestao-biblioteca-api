@@ -2,7 +2,7 @@ package com.gianmarques001.biblioteca_api.auth.controller;
 
 
 import com.gianmarques001.biblioteca_api.auth.dto.AuthDTO;
-import com.gianmarques001.biblioteca_api.auth.entity.AuthDetails;
+import com.gianmarques001.biblioteca_api.auth.model.UserAuthDetails;
 import com.gianmarques001.biblioteca_api.common.model.MensagemDeErro;
 import com.gianmarques001.biblioteca_api.common.security.JwtToken;
 import com.gianmarques001.biblioteca_api.common.security.JwtUtils;
@@ -55,7 +55,7 @@ public class AuthController {
         try {
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(authDTO.email(), authDTO.senha());
             Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-            String token = JwtUtils.generateToken((AuthDetails) authenticate.getPrincipal());
+            String token = JwtUtils.generateToken((UserAuthDetails) authenticate.getPrincipal());
             return ResponseEntity.ok(new JwtToken(token));
         } catch (AuthenticationException e) {
             log.warn("Error no ", e.getMessage());
