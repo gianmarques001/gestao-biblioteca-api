@@ -38,10 +38,10 @@ public class EmprestimoTest {
     // Salvar Emprestimo Valido
     @Test
     void salvarEmprestimoValido_Retorno201() {
-        String token = JwtUtil.obterTokenAutenticado("api.usuario.dev@gmail.com");
+        String token = JwtUtil.obterTokenAutenticado("api.usuario@gmail.com");
 
         JSONObject requestParams = new JSONObject();
-        requestParams.put("livro", 202L);
+        requestParams.put("idLivro", 201);
 
         given()
                 .contentType(ContentType.JSON)
@@ -61,7 +61,7 @@ public class EmprestimoTest {
 
 
         JSONObject requestParams = new JSONObject();
-        requestParams.put("livro", 300);
+        requestParams.put("idLivro", 300);
 
         MensagemDeErro response = given()
                 .contentType(ContentType.JSON)
@@ -84,7 +84,7 @@ public class EmprestimoTest {
         String token = JwtUtil.obterTokenAutenticado("api.usuario.dev@gmail.com");
 
         JSONObject requestParams = new JSONObject();
-        requestParams.put("livro", 202);
+        requestParams.put("idLivro", 202);
 
         MensagemDeErro response = given()
                 .contentType(ContentType.JSON)
@@ -108,7 +108,7 @@ public class EmprestimoTest {
         String token = JwtUtil.obterTokenAutenticado("api.usuario@gmail.com");
 
         JSONObject requestParams = new JSONObject();
-        requestParams.put("livro", 202);
+        requestParams.put("idLivro", 202);
 
         MensagemDeErro response = given()
                 .contentType(ContentType.JSON)
@@ -131,7 +131,7 @@ public class EmprestimoTest {
         String token = JwtUtil.obterTokenAutenticado("api.usuario.dev@gmail.com");
 
         JSONObject requestParams = new JSONObject();
-        requestParams.put("livro", 201);
+        requestParams.put("idLivro", 201);
 
         MensagemDeErro response = given()
                 .contentType(ContentType.JSON)
